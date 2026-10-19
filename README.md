@@ -7,7 +7,7 @@ Each file includes the problem link, the table schema, and short notes on my app
 
 | Source | Solved |
 |---|---|
-| [SQLBolt](https://sqlbolt.com) | 12 / 18 |
+| [SQLBolt](https://sqlbolt.com) | 18 / 18 |
 | [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 0 / 50 |
 | [DataLemur](https://datalemur.com) | 0 |
 
@@ -20,6 +20,8 @@ Each file includes the problem link, the table schema, and short notes on my app
 - **Expressions:** computed columns, aliases, integer vs decimal division
 - **Aggregation:** `COUNT`, `SUM`, `AVG`, `MAX`, `GROUP BY`, `HAVING` vs `WHERE`
 - **Query execution order:** why `SELECT` aliases work in `ORDER BY` but not in `WHERE`
+- **Modifying data:** `INSERT`, `UPDATE`, `DELETE` (always verify the `WHERE` with a `SELECT` first)
+- **Schema:** `CREATE TABLE`, `ALTER TABLE`, `DROP TABLE`, primary & foreign keys
 
 ## SQLBolt solutions
 
@@ -37,6 +39,12 @@ Each file includes the problem link, the table schema, and short notes on my app
 | 10 | [Aggregates (Pt. 1)](sqlbolt/10_aggregates_1.sql) | `GROUP BY` |
 | 11 | [Aggregates (Pt. 2)](sqlbolt/11_aggregates_2.sql) | `HAVING` vs `WHERE` |
 | 12 | [Order of execution](sqlbolt/12_order_of_execution.sql) | Logical query order |
+| 13 | [Inserting rows](sqlbolt/13_insert.sql) | `INSERT`, primary keys |
+| 14 | [Updating rows](sqlbolt/14_update.sql) | `UPDATE`, escaping quotes |
+| 15 | [Deleting rows](sqlbolt/15_delete.sql) | `DELETE`, orphan rows |
+| 16 | [Creating tables](sqlbolt/16_create_table.sql) | `CREATE TABLE`, constraints |
+| 17 | [Altering tables](sqlbolt/17_alter_table.sql) | `ALTER TABLE`, defaults |
+| 18 | [Dropping tables](sqlbolt/18_drop_table.sql) | `DROP TABLE` |
 
 ## Notes
 
