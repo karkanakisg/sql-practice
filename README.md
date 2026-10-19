@@ -10,6 +10,7 @@ Each file includes the problem link, the table schema, and short notes on my app
 | [SQLBolt](https://sqlbolt.com) | 18 / 18 |
 | [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 0 / 50 |
 | [DataLemur](https://datalemur.com) | 0 |
+| [Select Star SQL](https://selectstarsql.com) | ✅ Completed — [notes](select-star-sql/NOTES.md) |
 
 ## Topics covered
 
