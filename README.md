@@ -9,6 +9,7 @@ Each file includes the problem link, the table schema, and short notes on my app
 |---|---|
 | [SQLBolt](https://sqlbolt.com) | ✅ 18 / 18 |
 | [Select Star SQL](https://selectstarsql.com) | ✅ Completed — [notes](select-star-sql/NOTES.md) |
+| [Kaggle Learn: Intro to SQL](https://www.kaggle.com/learn/intro-to-sql) | ✅ Certificate |
 | [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 15 / 50 |
 | [DataLemur](https://datalemur.com) | 0 |
 
