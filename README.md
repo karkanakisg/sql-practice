@@ -10,18 +10,20 @@ Each file includes the problem link, the table schema, and short notes on my app
 | [SQLBolt](https://sqlbolt.com) | ✅ 18 / 18 |
 | [Select Star SQL](https://selectstarsql.com) | ✅ Completed — [notes](select-star-sql/NOTES.md) |
 | [Kaggle Learn: Intro to SQL](https://www.kaggle.com/learn/intro-to-sql) | ✅ Certificate |
-| [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 15 / 50 |
-| [DataLemur](https://datalemur.com) | 0 |
+| [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 16 / 50 |
+| [DataLemur](https://datalemur.com) | 5 |
 
 ## Topics covered
 
 - **Filtering:** `WHERE`, `BETWEEN`, `IN`, `LIKE` with `%` / `_` wildcards
 - **Sorting & pagination:** `ORDER BY`, `LIMIT`, `OFFSET`, `DISTINCT`
-- **Joins:** `INNER`, `LEFT`, `CROSS` and self-joins; anti-join pattern (`LEFT JOIN ... WHERE key IS NULL`)
-- **NULL handling:** `IS NULL`, `COALESCE`, why `NULL != x` is never TRUE, `COUNT(*)` vs `COUNT(column)`
-- **Aggregation:** `COUNT`, `SUM`, `AVG`, `MAX`, `GROUP BY`, `HAVING` vs `WHERE`
-- **Conditional aggregation:** `AVG(CASE WHEN ... THEN 1 ELSE 0 END)` for rates
-- **Expressions & functions:** computed columns, aliases, integer vs decimal division, `ROUND`, `DATEDIFF`, `CHAR_LENGTH` vs `LENGTH`
+- **Joins:** `INNER`, `LEFT`, `CROSS` and self-joins; join conditions in `ON` vs filters in `WHERE`
+- **Anti-join:** `LEFT JOIN ... WHERE key IS NULL`, `NOT EXISTS`, and why `NOT IN` fails with NULLs
+- **NULL handling:** `IS NULL`, `COALESCE` / `IFNULL`, why `NULL != x` is never TRUE, `COUNT(*)` vs `COUNT(column)`
+- **Aggregation:** `COUNT`, `SUM`, `AVG`, `MAX`, `GROUP BY`, `HAVING` vs `WHERE`, "has all of X" pattern
+- **Conditional aggregation:** `SUM/AVG(CASE WHEN ...)` for counts and rates, weighted averages
+- **Dates:** `DATEDIFF`, date arithmetic and casting in PostgreSQL, index-friendly date ranges
+- **Expressions & functions:** computed columns, aliases, integer vs decimal division, `ROUND`, `CHAR_LENGTH` vs `LENGTH`
 - **Query execution order:** why `SELECT` aliases work in `ORDER BY` but not in `WHERE`
 - **Modifying data:** `INSERT`, `UPDATE`, `DELETE` (verify the `WHERE` with a `SELECT` first)
 - **Schema:** `CREATE TABLE`, `ALTER TABLE`, `DROP TABLE`, primary & foreign keys
@@ -45,6 +47,17 @@ Each file includes the problem link, the table schema, and short notes on my app
 | 570 | [Managers with at Least 5 Direct Reports](leetcode/570_managers_with_at_least_5_direct_reports.sql) | Medium | Self-join + `HAVING` |
 | 1934 | [Confirmation Rate](leetcode/1934_confirmation_rate.sql) | Medium | Conditional aggregation |
 | 620 | [Not Boring Movies](leetcode/620_not_boring_movies.sql) | Easy | Filtering, `%` |
+| 1251 | [Average Selling Price](leetcode/1251_average_selling_price.sql) | Easy | Range join, weighted average |
+
+## DataLemur
+
+| Problem | Company | Difficulty | Key concept |
+|---|---|---|---|
+| [Data Science Skills](datalemur/data_science_skills.sql) | LinkedIn | Easy | "Has all of X": `GROUP BY` + `HAVING COUNT(DISTINCT)` |
+| [Page With No Likes](datalemur/page_with_no_likes.sql) | Facebook | Easy | Anti-join |
+| [Unfinished Parts](datalemur/unfinished_parts.sql) | Tesla | Easy | `IS NULL` |
+| [Laptop vs. Mobile Viewership](datalemur/laptop_vs_mobile_viewership.sql) | New York Times | Easy | Conditional aggregation |
+| [Average Post Hiatus (Part 1)](datalemur/average_post_hiatus_part_1.sql) | Facebook | Easy | Date arithmetic, sargable date filter |
 
 ## SQLBolt solutions
 
@@ -71,6 +84,6 @@ Each file includes the problem link, the table schema, and short notes on my app
 
 ## Notes
 
-- SQLBolt runs on SQLite and LeetCode on MySQL, so some solutions include comments on where
-  standard SQL (e.g. PostgreSQL) behaves differently.
+- SQLBolt runs on SQLite, LeetCode on MySQL and DataLemur on PostgreSQL, so some solutions
+  include comments on where the dialects behave differently.
 - String literals use single quotes; columns are table-qualified in multi-table queries.
