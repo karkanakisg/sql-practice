@@ -10,8 +10,8 @@ Each file includes the problem link, the table schema, and short notes on my app
 | [SQLBolt](https://sqlbolt.com) | ✅ 18 / 18 |
 | [Select Star SQL](https://selectstarsql.com) | ✅ Completed — [notes](select-star-sql/NOTES.md) |
 | [Kaggle Learn: Intro to SQL](https://www.kaggle.com/learn/intro-to-sql) | ✅ Certificate |
-| [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 16 / 50 |
-| [DataLemur](https://datalemur.com) | 5 |
+| [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 20 / 50 |
+| [DataLemur](https://datalemur.com) | 10 |
 
 ## Topics covered
 
@@ -21,8 +21,9 @@ Each file includes the problem link, the table schema, and short notes on my app
 - **Anti-join:** `LEFT JOIN ... WHERE key IS NULL`, `NOT EXISTS`, and why `NOT IN` fails with NULLs
 - **NULL handling:** `IS NULL`, `COALESCE` / `IFNULL`, why `NULL != x` is never TRUE, `COUNT(*)` vs `COUNT(column)`
 - **Aggregation:** `COUNT`, `SUM`, `AVG`, `MAX`, `GROUP BY`, `HAVING` vs `WHERE`, "has all of X" pattern
-- **Conditional aggregation:** `SUM/AVG(CASE WHEN ...)` for counts and rates, weighted averages
-- **Dates:** `DATEDIFF`, date arithmetic and casting in PostgreSQL, index-friendly date ranges
+- **Conditional aggregation:** `SUM/AVG(CASE WHEN ...)` for counts, sums and rates; weighted averages
+- **Subqueries & CTEs:** scalar subqueries for totals, `WITH` to split a problem into steps
+- **Dates:** `DATEDIFF`, `DATE_FORMAT`, `EXTRACT` / `DATE_TRUNC`, index-friendly date ranges, keeping the year when grouping by month
 - **Expressions & functions:** computed columns, aliases, integer vs decimal division, `ROUND`, `CHAR_LENGTH` vs `LENGTH`
 - **Query execution order:** why `SELECT` aliases work in `ORDER BY` but not in `WHERE`
 - **Modifying data:** `INSERT`, `UPDATE`, `DELETE` (verify the `WHERE` with a `SELECT` first)
@@ -48,6 +49,10 @@ Each file includes the problem link, the table schema, and short notes on my app
 | 1934 | [Confirmation Rate](leetcode/1934_confirmation_rate.sql) | Medium | Conditional aggregation |
 | 620 | [Not Boring Movies](leetcode/620_not_boring_movies.sql) | Easy | Filtering, `%` |
 | 1251 | [Average Selling Price](leetcode/1251_average_selling_price.sql) | Easy | Range join, weighted average |
+| 1075 | [Project Employees I](leetcode/1075_project_employees_i.sql) | Easy | `JOIN` + `AVG` |
+| 1633 | [Percentage of Users Attended a Contest](leetcode/1633_percentage_of_users_attended_a_contest.sql) | Easy | Scalar subquery for totals |
+| 1211 | [Queries Quality and Percentage](leetcode/1211_queries_quality_and_percentage.sql) | Easy | Two metrics in one pass |
+| 1193 | [Monthly Transactions I](leetcode/1193_monthly_transactions_i.sql) | Medium | `DATE_FORMAT`, conditional `SUM` |
 
 ## DataLemur
 
@@ -58,6 +63,11 @@ Each file includes the problem link, the table schema, and short notes on my app
 | [Unfinished Parts](datalemur/unfinished_parts.sql) | Tesla | Easy | `IS NULL` |
 | [Laptop vs. Mobile Viewership](datalemur/laptop_vs_mobile_viewership.sql) | New York Times | Easy | Conditional aggregation |
 | [Average Post Hiatus (Part 1)](datalemur/average_post_hiatus_part_1.sql) | Facebook | Easy | Date arithmetic, sargable date filter |
+| [Teams Power Users](datalemur/teams_power_users.sql) | Microsoft | Easy | Top-N with `LIMIT`, ties caveat |
+| [Duplicate Job Listings](datalemur/duplicate_job_listings.sql) | LinkedIn | Easy | CTE, `COUNT(DISTINCT)` |
+| [Cities With Completed Trades](datalemur/cities_with_completed_trades.sql) | Robinhood | Easy | `JOIN` + top-N |
+| [Average Review Ratings](datalemur/average_review_ratings.sql) | Amazon | Easy | Grouping by month (year caveat) |
+| [Well Paid Employees](datalemur/well_paid_employees.sql) | FAANG | Easy | Self-join |
 
 ## SQLBolt solutions
 
