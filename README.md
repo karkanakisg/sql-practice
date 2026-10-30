@@ -10,7 +10,7 @@ Each file includes the problem link, the table schema, and short notes on my app
 | [SQLBolt](https://sqlbolt.com) | ✅ 18 / 18 |
 | [Select Star SQL](https://selectstarsql.com) | ✅ Completed — [notes](select-star-sql/NOTES.md) |
 | [Kaggle Learn: Intro to SQL](https://www.kaggle.com/learn/intro-to-sql) | ✅ Certificate |
-| [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 20 / 50 |
+| [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 30 / 50 |
 | [DataLemur](https://datalemur.com) | 10 |
 
 ## Topics covered
@@ -20,10 +20,12 @@ Each file includes the problem link, the table schema, and short notes on my app
 - **Joins:** `INNER`, `LEFT`, `CROSS` and self-joins; join conditions in `ON` vs filters in `WHERE`
 - **Anti-join:** `LEFT JOIN ... WHERE key IS NULL`, `NOT EXISTS`, and why `NOT IN` fails with NULLs
 - **NULL handling:** `IS NULL`, `COALESCE` / `IFNULL`, why `NULL != x` is never TRUE, `COUNT(*)` vs `COUNT(column)`
-- **Aggregation:** `COUNT`, `SUM`, `AVG`, `MAX`, `GROUP BY`, `HAVING` vs `WHERE`, "has all of X" pattern
+- **Aggregation:** `COUNT`, `SUM`, `AVG`, `MAX`, `GROUP BY`, `HAVING` vs `WHERE`; aggregates over empty sets return NULL
+- **"Has all of X":** `HAVING COUNT(DISTINCT ...)` against a fixed number or a scalar subquery
+- **First row per group:** `MIN(...)` per group + tuple `IN`; `ROW_NUMBER()` as the window-function alternative
 - **Conditional aggregation:** `SUM/AVG(CASE WHEN ...)` for counts, sums and rates; weighted averages
 - **Subqueries & CTEs:** scalar subqueries for totals, `WITH` to split a problem into steps
-- **Dates:** `DATEDIFF`, `DATE_FORMAT`, `EXTRACT` / `DATE_TRUNC`, index-friendly date ranges, keeping the year when grouping by month
+- **Dates:** `DATEDIFF`, `DATE_ADD` / `DATE_SUB`, `DATE_FORMAT`, `EXTRACT` / `DATE_TRUNC`, inclusive date windows, index-friendly date ranges
 - **Expressions & functions:** computed columns, aliases, integer vs decimal division, `ROUND`, `CHAR_LENGTH` vs `LENGTH`
 - **Query execution order:** why `SELECT` aliases work in `ORDER BY` but not in `WHERE`
 - **Modifying data:** `INSERT`, `UPDATE`, `DELETE` (verify the `WHERE` with a `SELECT` first)
@@ -53,6 +55,16 @@ Each file includes the problem link, the table schema, and short notes on my app
 | 1633 | [Percentage of Users Attended a Contest](leetcode/1633_percentage_of_users_attended_a_contest.sql) | Easy | Scalar subquery for totals |
 | 1211 | [Queries Quality and Percentage](leetcode/1211_queries_quality_and_percentage.sql) | Easy | Two metrics in one pass |
 | 1193 | [Monthly Transactions I](leetcode/1193_monthly_transactions_i.sql) | Medium | `DATE_FORMAT`, conditional `SUM` |
+| 1174 | [Immediate Food Delivery II](leetcode/1174_immediate_food_delivery_ii.sql) | Medium | First row per group, tuple `IN` |
+| 550 | [Game Play Analysis IV](leetcode/550_game_play_analysis_iv.sql) | Medium | CTE + `LEFT JOIN` on next day |
+| 2356 | [Number of Unique Subjects Taught by Each Teacher](leetcode/2356_number_of_unique_subjects_taught_by_each_teacher.sql) | Easy | `COUNT(DISTINCT)` |
+| 1141 | [User Activity for the Past 30 Days I](leetcode/1141_user_activity_for_the_past_30_days_i.sql) | Easy | Inclusive date window |
+| 1070 | [Product Sales Analysis III](leetcode/1070_product_sales_analysis_iii.sql) | Medium | First row per group, bare-column pitfall |
+| 596 | [Classes More Than 5 Students](leetcode/596_classes_more_than_5_students.sql) | Easy | `HAVING` |
+| 1729 | [Find Followers Count](leetcode/1729_find_followers_count.sql) | Easy | `GROUP BY` + required `ORDER BY` |
+| 619 | [Biggest Single Number](leetcode/619_biggest_single_number.sql) | Easy | CTE, `MAX` over empty set → NULL |
+| 1045 | [Customers Who Bought All Products](leetcode/1045_customers_who_bought_all_products.sql) | Medium | "Has all of X" with scalar subquery |
+| 1731 | [The Number of Employees Which Report to Each Employee](leetcode/1731_the_number_of_employees_which_report_to_each_employee.sql) | Easy | Self-join + aggregates |
 
 ## DataLemur
 
