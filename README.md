@@ -11,7 +11,7 @@ Each file includes the problem link, the table schema, and short notes on my app
 | [Select Star SQL](https://selectstarsql.com) | ✅ Completed — [notes](select-star-sql/NOTES.md) |
 | [Kaggle Learn: Intro to SQL](https://www.kaggle.com/learn/intro-to-sql) | ✅ Certificate |
 | [Kaggle Learn: Advanced SQL](https://www.kaggle.com/learn/advanced-sql) | ✅ Certificate |
-| [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 30 / 50 |
+| [LeetCode Top SQL 50](https://leetcode.com/studyplan/top-sql-50/) | 40 / 50 |
 | [DataLemur](https://datalemur.com) | 10 |
 
 ## Topics covered
@@ -19,14 +19,15 @@ Each file includes the problem link, the table schema, and short notes on my app
 - **Filtering:** `WHERE`, `BETWEEN`, `IN`, `LIKE` with `%` / `_` wildcards
 - **Sorting & pagination:** `ORDER BY`, `LIMIT`, `OFFSET`, `DISTINCT`
 - **Joins:** `INNER`, `LEFT`, `CROSS` and self-joins; join conditions in `ON` vs filters in `WHERE`
-- **Anti-join:** `LEFT JOIN ... WHERE key IS NULL`, `NOT EXISTS`, and why `NOT IN` fails with NULLs
+- **Anti-join:** `LEFT JOIN ... WHERE key IS NULL`, `NOT EXISTS`, and when `NOT IN` breaks on NULLs
 - **NULL handling:** `IS NULL`, `COALESCE` / `IFNULL`, why `NULL != x` is never TRUE, `COUNT(*)` vs `COUNT(column)`
-- **Aggregation:** `COUNT`, `SUM`, `AVG`, `MAX`, `GROUP BY`, `HAVING` vs `WHERE`; aggregates over empty sets return NULL
+- **Aggregation:** `COUNT`, `SUM`, `AVG`, `MAX`, `GROUP BY`, `HAVING` vs `WHERE`; on an empty set `COUNT` returns 0, other aggregates NULL
 - **"Has all of X":** `HAVING COUNT(DISTINCT ...)` against a fixed number or a scalar subquery
-- **First row per group:** `MIN(...)` per group + tuple `IN`; `ROW_NUMBER()` as the window-function alternative
-- **Conditional aggregation:** `SUM/AVG(CASE WHEN ...)` for counts, sums and rates; weighted averages
-- **Subqueries & CTEs:** scalar subqueries for totals, `WITH` to split a problem into steps
-- **Dates:** `DATEDIFF`, `DATE_ADD` / `DATE_SUB`, `DATE_FORMAT`, `EXTRACT` / `DATE_TRUNC`, inclusive date windows, index-friendly date ranges
+- **Conditional aggregation:** `SUM/AVG/COUNT(CASE WHEN ...)` for counts, sums, rates and picking values
+- **Subqueries & CTEs:** scalar subqueries for totals, tuple `IN`, `WITH` to split a problem into steps
+- **Window functions:** `ROW_NUMBER` (first / latest row per group), `LAG` / `LEAD` (neighbouring rows), running totals, moving averages with `ROWS BETWEEN ... PRECEDING`
+- **Set operations:** `UNION ALL` vs `UNION` (duplicate removal), building fixed category rows
+- **Dates:** `DATEDIFF`, `DATE_ADD` / `DATE_SUB`, `DATE_FORMAT`, `EXTRACT` / `DATE_TRUNC`, inclusive windows, index-friendly date ranges, always filtering on the year
 - **Expressions & functions:** computed columns, aliases, integer vs decimal division, `ROUND`, `CHAR_LENGTH` vs `LENGTH`
 - **Query execution order:** why `SELECT` aliases work in `ORDER BY` but not in `WHERE`
 - **Modifying data:** `INSERT`, `UPDATE`, `DELETE` (verify the `WHERE` with a `SELECT` first)
@@ -66,6 +67,16 @@ Each file includes the problem link, the table schema, and short notes on my app
 | 619 | [Biggest Single Number](leetcode/619_biggest_single_number.sql) | Easy | CTE, `MAX` over empty set → NULL |
 | 1045 | [Customers Who Bought All Products](leetcode/1045_customers_who_bought_all_products.sql) | Medium | "Has all of X" with scalar subquery |
 | 1731 | [The Number of Employees Which Report to Each Employee](leetcode/1731_the_number_of_employees_which_report_to_each_employee.sql) | Easy | Self-join + aggregates |
+| 1789 | [Primary Department for Each Employee](leetcode/1789_primary_department_for_each_employee.sql) | Easy | Conditional aggregation to pick a value |
+| 610 | [Triangle Judgement](leetcode/610_triangle_judgement.sql) | Easy | `CASE` |
+| 180 | [Consecutive Numbers](leetcode/180_consecutive_numbers.sql) | Medium | `LAG` / `LEAD` |
+| 1164 | [Product Price at a Given Date](leetcode/1164_product_price_at_a_given_date.sql) | Medium | Latest row per group (`ROW_NUMBER`) + default |
+| 1204 | [Last Person to Fit in the Bus](leetcode/1204_last_person_to_fit_in_the_bus.sql) | Medium | Running total |
+| 1907 | [Count Salary Categories](leetcode/1907_count_salary_categories.sql) | Medium | `UNION ALL`, `COUNT` on empty sets |
+| 1978 | [Employees Whose Manager Left the Company](leetcode/1978_employees_whose_manager_left_the_company.sql) | Easy | `NOT IN` vs `NOT EXISTS` |
+| 626 | [Exchange Seats](leetcode/626_exchange_seats.sql) | Medium | `LAG` / `LEAD` inside `CASE` |
+| 1341 | [Movie Rating](leetcode/1341_movie_rating.sql) | Medium | Two top-1 queries with `UNION ALL` |
+| 1321 | [Restaurant Growth](leetcode/1321_restaurant_growth.sql) | Medium | Moving average with a window frame |
 
 ## DataLemur
 
